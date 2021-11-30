@@ -1,0 +1,44 @@
+---
+title: "demography"
+author: "Fahmida Akter"
+date: "11/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## load packages
+```{r load-packages}
+library(tidyverse)
+
+## read in data
+```
+```{r read-data}
+# demography
+data <- read_csv("C:/Users/user/Desktop/Input folder/deprivation/demography.csv")
+```
+## prepare data
+```{r prepare-data}
+# inspect data
+glimpse(data)
+
+# select data
+age_simd <- data %>% 
+  select( age, deprivation)
+```
+## Descriptive statistics
+
+```{r descriptive statistics}
+summary(age_simd)
+
+## load other packages
+```
+```{r other-packages}
+library(dplyr)
+age_simd %>% group_by(deprivation)%>%
+  summarise(min = min(age), max= max(age), median=median(age))
+```
+
+
